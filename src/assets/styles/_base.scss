@@ -1,3 +1,8 @@
-.section-bg {
-  background-color: var(--color-bg);
+.section {
+  padding: 125px 0;
+
+  &-bg {
+    background-color: var(--color-bg);
+    padding: 80px 0;
+  }
 }

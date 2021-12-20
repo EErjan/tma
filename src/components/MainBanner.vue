@@ -1,5 +1,5 @@
 <template>
-  <section class="main__banner section-bg">
+  <section class="main__banner">
     <div class="my-container">
       <div class="main__banner-wrap mb-60">
         <div class="main__banner-content">
@@ -75,6 +75,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--color-bg);
 
   &-wrap {
     display: flex;
