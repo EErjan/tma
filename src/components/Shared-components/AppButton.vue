@@ -29,7 +29,7 @@
       },
       fontSize: {
         type: [Number, String],
-        default: 18
+        default: 16
       },
       weight: {
         type: [Number, String],

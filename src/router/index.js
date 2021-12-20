@@ -10,52 +10,11 @@ const routes = [
         children: [
             {
                 path: "/",
-                name: "Routes",
-                component: () => import("../views/Routes.vue"),
-            },
-            {
-                path: "/drivers",
-                name: "Routes",
-                component: () => import("../views/Drivers.vue"),
-            },
-
-            {
-                path: "/monitoring",
-                name: "Monitoring",
-                component: () => import("../views/Monitoring.vue"),
-            },
-
-            {
-                path: "/addresses",
-                name: "Addresses",
-                component: () => import("../views/Addresses.vue"),
-            },
-
-
-            {
-                path: "/routes-cars",
-                name: "RoutesCars",
-                component: () => import("../views/RoutesCars.vue"),
+                name: "Main",
+                component: () => import("../views/Main.vue"),
             },
         ],
     },
-
-    {
-        path: "/login",
-        component: () => import("../layouts/LoginLayout.vue"),
-        children: [
-            {
-                path: "/",
-                name: "login",
-                meta: {
-                    logout: true,
-                    public: true,
-                },
-                component: () => import("../views/Login.vue"),
-            },
-        ],
-    },
-
 ];
 
 const router = new VueRouter({

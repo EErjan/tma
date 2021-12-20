@@ -15,9 +15,8 @@ html {
 }
 
 body {
-  background-color: var(--color-bg)!important;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: "Rubik", sans-serif;
   overflow-x: hidden;
   color: #181818;
   margin: 0;
@@ -77,3 +76,11 @@ ul li {
   background: var(--color-main);
 }
 
+.my-container {
+  max-width: 1260px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}

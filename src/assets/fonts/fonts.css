@@ -1,18 +1,18 @@
 @font-face {
-    font-family: "Poppins";
-    src: url("Poppins-Regular.ttf");
+    font-family: "Rubik";
+    src: url("Rubik-Regular.ttf");
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: url("Poppins-Medium.ttf");
+    font-family: "Rubik";
+    src: url("Rubik-Medium.ttf");
     font-weight: 500;
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: url("Poppins-Bold.ttf");
+    font-family: "Rubik";
+    src: url("Rubik-Bold.ttf");
     font-weight: 600;
 }
 

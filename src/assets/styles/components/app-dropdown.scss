@@ -1,97 +1,109 @@
 .app-dropdown {
   $self: &;
-  width: 270px;
-  max-width: 100%;
+  $trans: .15s;
   position: relative;
-  border-radius: 6px;
-  outline: none;
-  &:before {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    box-shadow: 0 0 0 3px rgba($color-main, 0.3);
-    border-radius: inherit;
-    opacity: 0;
-  }
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    user-select: none;
-    border-radius: inherit;
-    background: #FFFFFF;
-    border: 1px solid rgba(24, 24, 24, 0.2);
-    font-size: rem(20px);
-    line-height: 34px;
-    font-weight: 500;
-    height: 36px;
-    padding: 0 9px;
-    width: 100%;
-    position: relative;
-    span {
-      width: 50px;
-      flex-grow: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    &:after {
-      flex-shrink: 0;
-      display: block;
-      content: '';
-      width: 20px;
-      height: 20px;
-      margin-left: 20px;
-      background: url('~/assets/icons/arrow-down.svg') center/contain no-repeat;
-      transition: transform .15s ease-out;
-    }
-  }
   &__menu {
-    list-style-type: none;
-    margin: 0;
-    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    min-width: 150px;
+    z-index: 2;
     position: absolute;
     top: calc(100% + 10px);
-    left: 0;
-    width: 100%;
     background: #FFFFFF;
-    border: 1px solid rgba(24, 24, 24, 0.1);
-    box-shadow: 10px 10px 60px rgba(0, 0, 0, 0.1);
-    border-radius: inherit;
-    padding: 10px;
-  }
-  &__list-item {
-    cursor: pointer;
-    user-select: none;
-    transition: color .15s linear;
-    font-weight: 600;
-    margin-bottom: 10px;
-    &--active,
-    &:hover {
-      color: $color-main;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    max-height: 380px;
+    display: flex;
+    > * {
+      width: 100%;
     }
   }
-  &--focused {
-    &:before {
-      opacity: 1;
+  &__title {
+    max-width: calc(100% - 16px);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    font-weight: var(--font-weight);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &__header {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    height: var(--height);
+    padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
+    background: #FFFFFF;
+    border: 1px solid #E7EEF4;
+    border-radius: var(--radius);
+    &:after {
+      transition: transform $trans ease-out;
+      display: block;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background: url('/assets/icons/arrow-down-blue.svg') center/contain no-repeat;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+  }
+  &__item {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 10px 20px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    &--selected,
+    &:hover {
+      background: #F9FCFF;
+    }
+  }
+  &__select {
+    position: absolute;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  &--width {
+    width: var(--width);
+    #{$self}__header {
+      width: 100%;
     }
   }
   &--opened {
-    #{$self}__header:after {
-      transform: rotate(180deg);
+    #{$self}__header {
+      border: 1px solid #FFC700;
+      &:after {
+        transform: rotate(180deg);
+      }
     }
   }
-
+  &--focused {
+    #{$self}__header {
+      border: 1px solid #FFC700;
+    }
+  }
+  &--menu-right {
+    #{$self}__menu {
+      right: 0;
+    }
+  }
+  &--menu-left {
+    #{$self}__menu {
+      left: 0;
+    }
+  }
   &-enter-active, &-leave-active {
-    transition: transform .15s ease-out, opacity .15s linear;
+    transition: transform $trans ease-in, opacity $trans ease-in;
   }
   &-enter, &-leave-to {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
     opacity: 0;
   }
 }

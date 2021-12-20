@@ -13,22 +13,26 @@
   text-align: center;
 
   img {
-    min-width: 14px!important;
+    min-width: 14px !important;
   }
+
   > * {
     vertical-align: middle;
   }
+
   @include has-hover {
     &:hover {
       background-color: var(--background-hover);
       color: var(--color-hover);
     }
   }
+
   &:active {
     background-color: var(--background-active);
     color: var(--color-active);
     transform: scale(0.94);
   }
+
   &:before {
     transition: opacity $trans linear;
     display: block;
@@ -43,40 +47,52 @@
     opacity: 0;
     border-radius: inherit;
   }
+
   &:focus {
     &:before {
       opacity: 0.4;
     }
   }
+
   &--nf:focus:before {
     opacity: 0;
   }
-  @each $height in (30, 40, 50,60) {
+
+  @each $height in (30, 40, 50, 56, 60) {
     &--hg-#{$height} {
       height: #{$height}px;
       line-height: #{$height}px;
     }
   }
   @each $radius in (10, 16, 28, 50, 100) {
-    &--rd-#{$radius} { border-radius: #{$radius}px; }
+    &--rd-#{$radius} {
+      border-radius: #{$radius}px;
+    }
   }
   @each $sidesPadding in (0, 5, 10, 15, 20, 30, 50) {
-    &--sd-#{$sidesPadding} { padding: 0 #{$sidesPadding}px; }
+    &--sd-#{$sidesPadding} {
+      padding: 0 #{$sidesPadding}px;
+    }
   }
   @each $fontSize in (14, 18) {
-    &--fn-#{$fontSize} { font-size: #{$fontSize}px; }
+    &--fn-#{$fontSize} {
+      font-size: #{$fontSize}px;
+    }
   }
   @each $weight in (600) {
-    &--wg-#{$weight} { font-weight: #{$weight}; }
+    &--wg-#{$weight} {
+      font-weight: #{$weight};
+    }
   }
-  &--wd { width: var(--wd); }
-  @each $theme, $bg, $bg-h, $bg-a, $cl, $cl-h, $cl-a in (
-      ('main', #22376C, lighten(#22376C, 5%), darken(#22376C, 5%), white, white, white),
-      ('white', white, lighten(white, 5%), darken(white, 5%), #22376C, #22376C, #22376C),
-      //('secondary', $color-secondary, lighten($color-secondary, 5%), darken($color-secondary, 5%), #fff, #fff, #fff),
-      //('transparent', transparent, rgba($color-main, 0.1), rgba($color-main, 0.15), inherit, inherit, inherit),
-      //('grey', #EDF5FF, #EDF5FF, darken(#EDF5FF, 5%), #95ABC6, #95ABC6, #95ABC6),
 
+  &--wd {
+    width: var(--wd);
+  }
+
+  @each $theme, $bg, $bg-h, $bg-a, $cl, $cl-h, $cl-a in (
+                  ('main', #104798, lighten(#104798, 5%), darken(#104798, 5%), white, white, white),
+                  ('secondary', #FFA800, lighten(#FFA800, 5%), darken(#FFA800, 5%), white, white, white),
+                  ('white', white, lighten(white, 5%), darken(white, 5%), #104798, #104798, #104798),
   ) {
     &--th-#{$theme} {
       --background: #{$bg};
@@ -87,15 +103,19 @@
       --color-active: #{$cl-a};
     }
   }
+
   &--shadow-default {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
   }
+
   &--shadow-medium {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   }
+
   &--line {
     background: transparent;
     --color: var(--background);
+
     &:after {
       transition: border #{$trans} linear;
       display: block;
@@ -108,28 +128,34 @@
       border-radius: inherit;
       border: 1px solid var(--background);
     }
+
     @include has-hover {
-      &:hover{
+      &:hover {
         &:after {
           border: 1px solid var(--background-hover);
         }
       }
     }
+
     &:active:after {
       border: 1px solid var(--background-active);
     }
   }
-   &--fl {
+
+  &--fl {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   &[disabled] {
     opacity: 0.55;
     cursor: not-allowed;
+
     &:before {
       display: none;
     }
+
     &:active {
       transform: none;
     }

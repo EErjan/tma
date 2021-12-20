@@ -5,13 +5,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        mainActive: false
+        mainActive: false,
+        windowWidth: null,
     },
     getters: {},
     mutations: {
         toggleMenu: (state) => {
             state.mainActive = !state.mainActive
-        }
+        },
+        setWindowWidth(state, newWidth) {
+            state.windowWidth = newWidth;
+        },
     },
     actions: {},
 });

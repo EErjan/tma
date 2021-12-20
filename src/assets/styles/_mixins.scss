@@ -1,34 +1,152 @@
 @mixin has-hover {
-  @media (hover), (min--moz-device-pixel-ratio:0) {
+  @media (hover), (min--moz-device-pixel-ratio: 0) {
     @content;
   }
 }
+
 @mixin placeholder {
-  ::-webkit-input-placeholder   {@content}
-  ::-moz-placeholder            {@content}
-  :-ms-input-placeholder        {@content}
-  :-moz-placeholder             {@content}
-  &::placeholder                {@content}
+  ::-webkit-input-placeholder {
+    @content
+  }
+  ::-moz-placeholder {
+    @content
+  }
+  :-ms-input-placeholder {
+    @content
+  }
+  :-moz-placeholder {
+    @content
+  }
+  &::placeholder {
+    @content
+  }
 }
+
 @function rem($pixels, $context: 16px) {
-  @if(unitless($pixels)) {
+  @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
 
-  @if(unitless($context)) {
+  @if (unitless($context)) {
     $context: $context * 1px;
   }
 
   @return $pixels / $context * 1rem;
 }
+
 @function size($pixels, $context: $container) {
-  @if(unitless($pixels)) {
+  @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
 
-  @if(unitless($context)) {
+  @if (unitless($context)) {
     $context: $context * 1px;
   }
 
   @return $pixels / $context * 100%;
+}
+
+
+// MARGIN
+
+@each $margin in (5, 10, 15, 20) {
+  .ma-#{$margin} {
+    margin: #{$margin}px;
+  }
+}
+
+@each $mb in (5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 110, 130) {
+  .mb-#{$mb} {
+    margin-bottom: #{$mb}px;
+  }
+}
+
+@each $mt in (5, 10, 20, 30, 50) {
+  .mt-#{$mt} {
+    margin-top: #{$mt}px;
+  }
+}
+
+@each $ml in (5, 10) {
+  .ml-#{$ml} {
+    margin-left: #{$ml}px;
+  }
+}
+
+@each $mr in (5, 10, 15, 20, 30, 40, 50) {
+  .mr-#{$mr} {
+    margin-right: #{$mr}px;
+  }
+}
+
+@each $my in (5, 10, 20) {
+  .my-#{$my} {
+    margin-top: #{$my}px;
+    margin-bottom: #{$my}px;
+  }
+}
+
+@each $mx in (5) {
+  .mx-#{$mx} {
+    margin-left: #{$mx}px;
+    margin-right: #{$mx}px;
+  }
+}
+
+// PADDiNG
+
+@each $padding in (5, 10, 15, 20, 30, 40, 50) {
+  .pa-#{$padding} {
+    padding: #{$padding}px;
+  }
+}
+
+@each $pb in (5, 10, 15, 20, 30, 40, 50, 60, 80) {
+  .pb-#{$pb} {
+    padding-bottom: #{$pb}px;
+  }
+}
+
+@each $pt in (5, 30, 40, 60, 80) {
+  .pt-#{$pt} {
+    padding-top: #{$pt}px;
+  }
+}
+
+@each $pl in (5) {
+  .pl-#{$pl} {
+    padding-left: #{$pl}px;
+  }
+}
+
+@each $pr in (5, 10) {
+  .pr-#{$pr} {
+    padding-right: #{$pr}px;
+  }
+}
+
+@each $py in (5, 10, 20, 30, 40, 50, 60, 80) {
+  .py-#{$py} {
+    padding-top: #{$py}px;
+    padding-bottom: #{$py}px;
+  }
+}
+
+@each $px in (5, 20) {
+  .px-#{$px} {
+    padding-left: #{$px}px;
+    padding-right: #{$px}px;
+  }
+}
+
+@each $fs in (12, 14, 16, 17) {
+  .fs-#{$fs} {
+    font-size: #{$fs}px !important;
+  }
+}
+
+@each $fw in (100, 300, 400, 500, 600, 700) {
+  .fw-#{$fw} {
+    font-weight: #{$fw} !important;
+  }
 }
