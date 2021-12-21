@@ -3,8 +3,16 @@
     <section class="section">
       <div class="courses">
         <div class="courses__info">
-          <AppText size="40" line-height="46" class="mb-40" weight="600">Наши курсы</AppText>
-          <AppText size="16" line-height="26" class="text-color mb-40">
+          <AppText :size="isMobileMedium ? 24 : isDesktopMedium ? 32 : 40"
+                   :line-height="isMobileMedium ? 32 : isDesktopMedium ? 38 :  46"
+                   weight="600"
+                   :class="isMobileMedium ? 'mb-20' : 'mb-40'"
+          >Наши курсы
+          </AppText>
+          <AppText :size="isMobileMedium ? 14 : 16" line-height="26"
+                   class="text-color"
+                   :class="isMobileMedium ? 'mb-20' : 'mb-40'"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa nibh nibh urna bibendum ante
             tellus nec egestas porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AppText>
@@ -20,7 +28,12 @@
             <img :src="item.icon" alt="">
           </div>
 
-          <AppText size="18" line-height="22" weight="600" max-lines="4" style="min-height: 66px;" class="mb-25">
+          <AppText :size="isMobileMedium ? 14 : isDesktopSmall ? 16 : 18"
+                   :line-height="isMobileMedium ? 16 : isDesktopSmall  ? 18 : 22"
+                   weight="600"
+                   max-lines="4" style="min-height: 66px;"
+                   class="mb-25"
+          >
             {{ item.title }}
           </AppText>
 
@@ -158,6 +171,74 @@ export default {
       box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.06);
     }
 
+
+  }
+}
+
+@media (max-width: 1240px) {
+
+  .courses {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        'courses__info courses__info courses__info'
+        'q w e'
+        'r t y';
+
+    &__item {
+
+      padding: 20px;
+
+      &:nth-child(even) {
+        background-color: var(--color-bg);
+      }
+
+      &:nth-child(odd) {
+        background-color: white;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .courses {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    grid-template-areas:
+        'courses__info courses__info'
+        'q w'
+        'e r'
+        't y';
+
+    &__item {
+      background-color: var(--color-bg) !important;
+      box-shadow: none !important;
+    }
+
+    &__info {
+      padding: 0 15px 15px;
+    }
+
+  }
+}
+
+@media (max-width: 500px) {
+  .courses {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+    grid-template-areas:
+        'courses__info'
+        'q'
+        'w'
+        'e'
+        'r'
+        't'
+        'y';
+
+    &__item {
+      background-color: var(--color-bg) !important;
+      box-shadow: none !important;
+    }
 
   }
 }

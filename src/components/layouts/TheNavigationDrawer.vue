@@ -129,4 +129,11 @@ export default {
   }
 }
 
+@media (max-width: 500px) {
+  .navigation-drawer {
+    max-width: 75%;
+    padding: 20px;
+  }
+}
+
 </style>

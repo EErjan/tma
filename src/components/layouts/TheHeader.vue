@@ -190,4 +190,34 @@ export default {
 
 }
 
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .header__wrap {
+    padding: 0;
+  }
+
+  .main__banner-wrap {
+    min-height: calc(100vh - 114px);
+  }
+
+  .header .logo {
+    margin-right: 30px;
+  }
+
+  .main__banner-img {
+    max-width: 200px;
+  }
+
+  .main__banner-bg {
+    max-width: 330px;
+  }
+
+}
+
 </style>
