@@ -93,6 +93,7 @@
                   ('main', #104798, lighten(#104798, 5%), darken(#104798, 5%), white, white, white),
                   ('secondary', #FFA800, lighten(#FFA800, 5%), darken(#FFA800, 5%), white, white, white),
                   ('white', white, lighten(white, 5%), darken(white, 5%), #104798, #104798, #104798),
+                  ('bordered-transparent', transparent, lighten(transparent, 5%), darken(transparent, 5%), white, white, white),
   ) {
     &--th-#{$theme} {
       --background: #{$bg};
@@ -167,5 +168,13 @@
   &:hover {
     background-color: var(--color-main);
     color: white;
+  }
+}
+
+.a-btn--th-bordered-transparent {
+  border: 1px solid white;
+  &:hover {
+    background-color: white;
+    color: var(--color-main);
   }
 }

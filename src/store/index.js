@@ -10,12 +10,12 @@ export default new Vuex.Store({
     },
     getters: {},
     mutations: {
-        toggleMenu: (state) => {
-            state.mainActive = !state.mainActive
-        },
         setWindowWidth(state, newWidth) {
             state.windowWidth = newWidth;
         },
+        toggleMenu: (state) => {
+            state.mainActive = !state.mainActive
+        }
     },
     actions: {},
 });
