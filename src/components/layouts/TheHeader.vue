@@ -7,7 +7,9 @@
             <img src="/assets/icons/logo.svg" alt="">
           </a>
 
-          <nav class="header__menu">
+          <nav class="header__menu"
+               v-if="!isDesktopSmall"
+          >
             <ul class="header__menu-wrap">
               <li class="header__menu-item" v-for="(item, index) in menu" :key="index">
                 <router-link :to="item.path" class="header__menu-link">
@@ -21,6 +23,16 @@
 
         <div class="header__right">
           <AppLanguages/>
+
+          <AppButton theme="main" height="40"
+                     class="ml-20"
+                     sides="15"
+                     v-if="isDesktopSmall"
+                     @click="toggleMenu"
+          >
+            <img src="/assets/icons/menu.svg" style="max-width: 20px" alt="">
+          </AppButton>
+
         </div>
       </div>
     </div>
@@ -30,10 +42,12 @@
 <script>
 
 import AppLanguages from "./AppLanguages";
+import AppButton from "../Shared-components/AppButton";
+import {mapMutations} from "vuex"
 
 export default {
   name: "TheHeader",
-  components: {AppLanguages},
+  components: {AppButton, AppLanguages},
   data() {
     return {
       menu: [
@@ -61,7 +75,9 @@ export default {
     }
   },
 
-  methods: {}
+  methods: {
+    ...mapMutations({toggleMenu: 'toggleMenu'}),
+  }
 }
 </script>
 
@@ -75,6 +91,7 @@ export default {
 
   .logo {
     margin-right: 60px;
+
     img {
       max-width: 80px;
       width: 100%;
@@ -98,7 +115,9 @@ export default {
   }
 
   &__right {
-
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   &__menu {
@@ -131,7 +150,15 @@ export default {
       justify-content: center;
 
       &.nuxt-link-exact-active {
-        font-weight: 700;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 0;
+          top: 100%;
+          height: 2px;
+          background-color: var(--color-main);
+          transition: .3s;
+        }
       }
 
       &::before {
@@ -142,10 +169,24 @@ export default {
         height: 2px;
         background-color: var(--color-main);
         transition: .3s;
-
       }
     }
   }
+
+}
+
+@media (max-width: 1240px) {
+
+  .header__wrap {
+    padding: 0 20px;
+  }
+
+  .header__menu-item {
+    margin: 15px 25px 15px 0;
+  }
+}
+
+@media (max-width: 991px) {
 
 }
 

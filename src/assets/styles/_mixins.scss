@@ -67,7 +67,7 @@
   }
 }
 
-@each $ml in (5, 10) {
+@each $ml in (5, 10, 20) {
   .ml-#{$ml} {
     margin-left: #{$ml}px;
   }

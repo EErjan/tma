@@ -1,83 +1,132 @@
 <template>
+  <div>
     <div class="navigation-drawer"
          :class="{hide : !mainActive}"
     >
-        <div class="navigation-drawer__details">
-            <ul class="navigation-drawer__menu">
-                <li class="navigation-drawer__menu-item"
-                    v-for="(item, index) in menu" :key="index">
-                    <router-link :to="item.path" class="" exact="">
-                        <img :src="item.icon" alt="">
-                        <span class=""> {{ item.title }}</span>
-                    </router-link>
-                </li>
-            </ul>
-        </div>
+      <div class="navigation-drawer__details">
+        <ul class="navigation-drawer__menu">
+          <li class="navigation-drawer__menu-item"
+              v-for="(item, index) in menu" :key="index">
+            <a :href="item.path">
+              {{ item.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <div class="backdrop"
+         v-if="isDesktopSmall"
+         @click="toggleMenu"
+         :class="{hide : !mainActive }"
+    >
+
+    </div>
+  </div>
 </template>
 
 <script>
 
-    import {mapState, mapMutations} from "vuex"
+import {mapState, mapMutations} from "vuex"
 
-    export default {
-        name: "TheNavigationDrawer",
-        data() {
-            return {
-                menu: [
-                    {
-                        icon: "/assets/icons/routes.svg",
-                        title: "Маршуртлар",
-                        path: "/"
-                    },
-                    {
-                        icon: "/assets/icons/drivers.svg",
-                        title: "Хайдовчилар",
-                        path: "/drivers"
-                    },
-                    {
-                        icon: "/assets/icons/bus.svg",
-                        title: "Автобус",
-                        path: "/bus"
-                    },
-                    {
-                        icon: "/assets/icons/monitoring.svg",
-                        title: "Мониторинг",
-                        path: "/monitoring"
-                    },
-                    {
-                        icon: "/assets/icons/routes-cars.svg",
-                        title: "Маршуртлар-машиналар",
-                        path: "/routes-cars"
-                    },
-                    {
-                        icon: "/assets/icons/location.svg",
-                        title: "Манзиллар",
-                        path: "/addresses"
-                    },
-                    {
-                        icon: "/assets/icons/settings.svg",
-                        title: "Созламалар",
-                        path: "/settings"
-                    },
-
-                ],
-            }
+export default {
+  name: "TheNavigationDrawer",
+  data() {
+    return {
+      menu: [
+        {
+          title: "О нас",
+          path: "/"
         },
-        computed: {
-            ...mapState({mainActive: 'mainActive'})
+        {
+          title: "Курсы",
+          path: "/courses"
         },
-        methods: {
-            ...mapMutations({toggleMenu: 'toggleMenu'}),
-        }
-
+        {
+          title: "Преподаватели",
+          path: "/teachers"
+        },
+        {
+          title: "Новости",
+          path: "/news"
+        },
+        {
+          title: "Контакты",
+          path: "/contacts"
+        },
+      ]
     }
+  },
+  computed: {
+    ...mapState({mainActive: 'mainActive'})
+  },
+  methods: {
+    ...mapMutations({toggleMenu: 'toggleMenu'}),
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 
 .navigation-drawer {
-  display: none;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow: auto;
+  background-color: white;
+  max-width: 400px;
+  width: 100%;
+  z-index: 100;
+  transition: .3s;
+  padding: 30px;
+
+
+  &.hide {
+    left: -100%;
+  }
+
+  &__details {
+
+  }
+
+  &__menu {
+    &-item {
+      a {
+        display: flex;
+        padding: 10px 15px;
+        font-weight: 700;
+        transition: .3s;
+
+        &.active {
+          background-color: var(--color-bg);
+        }
+
+        &:hover {
+          background-color: var(--color-bg);
+        }
+
+      }
+    }
+  }
+
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  z-index: 90;
+  transition: .3s;
+  background-color: rgba(0, 0, 0, 0.40);
+
+  &.hide {
+    left: -100%;
+    opacity: 0;
+    transition: .3s;
+  }
 }
 
 </style>

@@ -4,7 +4,8 @@
       <div class="main__banner-wrap mb-60">
         <div class="main__banner-content">
           <AppText size="66" weight="600" class="mb-30">Онлайн-платформа</AppText>
-          <AppText size="20" line-height="28" class="text-color mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci viverra sapien
+          <AppText size="20" line-height="28" class="text-color mb-30">Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Orci viverra sapien
             tristique non et, urna,
             sapien sit tempus.
           </AppText>
@@ -133,6 +134,10 @@ export default {
     padding: 20px;
 
   }
+
+}
+
+@media (max-width: 1240px) {
 
 }
 
