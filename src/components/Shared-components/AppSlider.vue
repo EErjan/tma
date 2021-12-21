@@ -165,47 +165,16 @@ export default {
 
 @media (max-width: 1350px) {
 
-  .app-slider {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .app-slider__button-next {
-    right: -45px !important;
-  }
-
-  .app-slider__button-previous {
-    left: -45px !important;
-  }
 }
 
 @media (max-width: 991px) {
 
   .app-slider {
-    padding-left: 10px;
-    padding-right: 10px;
   }
 
-  .app-slider__button-next {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    right: -30px !important;
-  }
-
-  .app-slider__button-previous {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    left: -30px !important;
-  }
 }
 
 @media (max-width: 776px) {
-
-  .app-slider {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
 }
 
 </style>

@@ -1,7 +1,9 @@
 <template>
   <section class="section">
     <div class="my-container">
-      <div class="section__top mb-60">
+      <div class="section__top"
+           :class=" isDesktopSmall ? 'mb-30' : 'mb-60'"
+      >
         <AppText
             :size="isMobileSmall ? 28 : isMobile ? 34  : isDesktopMedium ? 38 : 42"
             :line-height=" isMobileSmall ? 32 : isMobile ? 38 : isDesktopMedium ? 42 : 46"
