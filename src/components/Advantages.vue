@@ -15,18 +15,23 @@
       </div>
       <div class="section__wrap">
 
-        <BlockWrap count="3" offset-y="30" offset-x="30">
+        <BlockWrap :count="isMobileMedium ? 1 : isDesktopSmall ? 2 : 3"
+                   :offset-y="isMobileMedium ? 15 : isDesktopSmall ? 20 : 30"
+                   :offset-x="isMobileMedium ? 15 : isDesktopSmall ? 20 : 30"
+        >
 
           <div class="advantages__item"
                v-for="(item, index) in advantages"
                :key="index"
           >
             <div class="advantages__item-inner">
-              <div class="block__icon mb-30">
+              <div class="block__icon"
+                   :class="isDesktopSmall ? 'mb-20' : 'mb-30'"
+              >
                 <img :src="item.icon" alt="">
               </div>
-              <AppText size="20" line-height="22" weight="600" class="mb-20"> {{ item.title }}</AppText>
-              <AppText size="16" line-height="24" class="text-color">Lorem ipsum dolor sit amet, consectetur adipiscing
+              <AppText :size="isMobileMedium ? 16 : 20" line-height="22" weight="600" class="mb-20"> {{ item.title }}</AppText>
+              <AppText :size="isMobileMedium ? 14 : 16" line-height="24" class="text-color">Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit. Massa nibh nibh urna bibendum ante tellus
                 nec
               </AppText>
@@ -70,8 +75,7 @@ export default {
       ]
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -127,5 +131,28 @@ export default {
     }
   }
 }
+
+@media (max-width: 1240px) {
+  .advantages__item {
+    &:hover {
+      transform: scale(1);
+    }
+    &::before {
+      font-size: 150px;
+      bottom: -50px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .advantages__item {
+    padding: 20px;
+    &::before {
+      right: -15px;
+    }
+  }
+
+}
+
 
 </style>

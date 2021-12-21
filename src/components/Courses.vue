@@ -28,8 +28,8 @@
             <img :src="item.icon" alt="">
           </div>
 
-          <AppText :size="isMobileMedium ? 14 : isDesktopSmall ? 16 : 18"
-                   :line-height="isMobileMedium ? 16 : isDesktopSmall  ? 18 : 22"
+          <AppText :size="isMobileMedium ? 16 : isDesktopSmall ? 16 : 18"
+                   :line-height="isMobileMedium ? 18 : isDesktopMedium  ? 18 : 22"
                    weight="600"
                    max-lines="4" style="min-height: 66px;"
                    class="mb-25"
@@ -185,7 +185,7 @@ export default {
         'r t y';
 
     &__item {
-
+      box-shadow: none !important;
       padding: 20px;
 
       &:nth-child(even) {
@@ -212,7 +212,6 @@ export default {
 
     &__item {
       background-color: var(--color-bg) !important;
-      box-shadow: none !important;
     }
 
     &__info {
@@ -236,6 +235,7 @@ export default {
         'y';
 
     &__item {
+      min-height: unset;
       background-color: var(--color-bg) !important;
       box-shadow: none !important;
     }
