@@ -13,6 +13,17 @@ const routes = [
                 name: "Main",
                 component: () => import("../views/Main.vue"),
             },
+
+            {
+                path: "/news/",
+                name: "News",
+                component: () => import("../views/News.vue"),
+            },
+            {
+                path: "/news/:id",
+                name: "News",
+                component: () => import("../views/NewsInner.vue"),
+            },
         ],
     },
 ];

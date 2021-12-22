@@ -5,6 +5,10 @@
     background-color: var(--color-bg);
     padding: 80px 0;
   }
+
+  &-padding {
+    padding: 80px 0;
+  }
 }
 
 .block {
@@ -83,7 +87,7 @@
 
 .cta__wrap-inner {
   .text {
-    position: relative!important;
+    position: relative !important;
     z-index: 5;
   }
 }

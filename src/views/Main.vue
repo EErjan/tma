@@ -1,11 +1,11 @@
 <template>
   <div>
-    <MainBanner/>
-    <Courses/>
-    <Advantages/>
-    <News/>
-    <Feedback/>
-    <CallToAction/>
+    <MainBanner id="banner"/>
+    <Courses id="courses"/>
+    <Advantages id="advantages"/>
+    <News id="news"/>
+    <Feedback id="feedback"/>
+    <CallToAction id="cta"/>
   </div>
 </template>
 

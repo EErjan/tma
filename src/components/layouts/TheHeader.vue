@@ -3,7 +3,7 @@
     <div class="my-container">
       <div class="header__wrap">
         <div class="header__left">
-          <a href="#" class="logo">
+          <a href="/" class="logo">
             <img src="/assets/icons/logo.svg" alt="">
           </a>
 
@@ -12,9 +12,9 @@
           >
             <ul class="header__menu-wrap">
               <li class="header__menu-item" v-for="(item, index) in menu" :key="index">
-                <router-link :to="item.path" class="header__menu-link">
+                <a :href="`#${item.path}`" class="header__menu-link">
                   {{ item.title }}
-                </router-link>
+                </a>
               </li>
             </ul>
           </nav>
@@ -53,23 +53,23 @@ export default {
       menu: [
         {
           title: "О нас",
-          path: "/"
+          path: ""
         },
         {
           title: "Курсы",
-          path: "/courses"
+          path: "courses"
         },
         {
           title: "Преподаватели",
-          path: "/teachers"
+          path: "teachers"
         },
         {
           title: "Новости",
-          path: "/news"
+          path: "news"
         },
         {
           title: "Контакты",
-          path: "/contacts"
+          path: "contacts"
         },
       ]
     }

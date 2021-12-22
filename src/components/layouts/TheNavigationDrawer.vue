@@ -7,7 +7,7 @@
         <ul class="navigation-drawer__menu">
           <li class="navigation-drawer__menu-item"
               v-for="(item, index) in menu" :key="index">
-            <a :href="item.path">
+            <a :href="`#${item.path}`">
               {{ item.title }}
             </a>
           </li>
@@ -36,23 +36,23 @@ export default {
       menu: [
         {
           title: "О нас",
-          path: "/"
+          path: ""
         },
         {
           title: "Курсы",
-          path: "/courses"
+          path: "courses"
         },
         {
           title: "Преподаватели",
-          path: "/teachers"
+          path: "teachers"
         },
         {
           title: "Новости",
-          path: "/news"
+          path: "news"
         },
         {
           title: "Контакты",
-          path: "/contacts"
+          path: "contacts"
         },
       ]
     }
