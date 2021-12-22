@@ -10,4 +10,34 @@
   color: white;
 }
 
+.d-flex {
+  display: flex;
+}
 
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-left {
+  justify-content: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.shadowed {
+  box-shadow: 0 8px 20px rgba(70, 93, 122, 0.08)
+}
+
+.bordered {
+  border: 1px solid var(--color-border) !important;
+}

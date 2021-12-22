@@ -15,7 +15,7 @@ const routes = [
             },
 
             {
-                path: "/news/",
+                path: "/news",
                 name: "News",
                 component: () => import("../views/News.vue"),
             },
@@ -23,6 +23,12 @@ const routes = [
                 path: "/news/:id",
                 name: "News",
                 component: () => import("../views/NewsInner.vue"),
+            },
+
+            {
+                path: "/course",
+                name: "Course",
+                component: () => import("../views/Course.vue"),
             },
         ],
     },

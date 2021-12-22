@@ -15,7 +15,7 @@
       <div class="section__wrap">
 
         <AppSlider :list="news"
-                   :slide-count="isMobileSmall ? 1 : isMobile ? 2 : 3"
+                   :slide-count="isMobileSmall ? 1 : isMobileMedium ? 2 : 3"
                    class="mb-40 news__slider"
         >
           <template #default="{item}">
