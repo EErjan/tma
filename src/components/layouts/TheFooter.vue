@@ -7,7 +7,10 @@
             <img src="/assets/icons/logo.svg" alt="logo">
           </a>
 
-          <AppText size="20" line-height="26" weight="500">
+          <AppText :size="isMobileSmall ? 14 : isMobile ? 16 : 20"
+                   :line-height="isMobile ? 22 : 26"
+                   weight="500"
+          >
             Toshkent tibbiyot akademiyasi huzuridagi pedagog kadrlarni
             qayta tayyorlash va ularning malakasini oshirish tarmoq markazi
           </AppText>
@@ -15,11 +18,17 @@
         </div>
 
         <div class="footer__top-contacts">
-          <AppText size="16" line-height="20" weight="500" class="mb-5">
+          <AppText :size="isMobile ? 14 : 16"
+                   :line-height="isMobile ? 18 : 20"
+                   weight="500"
+                   class="mb-5"
+          >
             <a href="mailto:onlineplatforma@info.uz">onlineplatforma@info.uz</a>
           </AppText>
 
-          <AppText size="22" line-height="22" weight="600">
+          <AppText :size="isMobileSmall ? 14 : isMobile ? 18 : 22"
+                   :line-height="isMobile ? 22 : 24"
+                   weight="600">
             <a href="tel:(97) 978 - 23 -67">(97) 978 - 23 -67</a>
           </AppText>
 
@@ -27,7 +36,7 @@
       </div>
 
       <div class="footer__bottom">
-        <AppText class="16" line-height="22">
+        <AppText size="16" line-height="22" class="footer__bottom-text">
           Mualliflik huquqi © 2021 Онлайн-платформаa
         </AppText>
 
@@ -63,7 +72,6 @@ export default {
     border-bottom: 1px solid var(--color-border);
     display: flex;
     width: 100%;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 
@@ -72,9 +80,20 @@ export default {
       width: 100%;
       display: flex;
       align-items: center;
+      padding-right: 40px;
     }
 
     &-contacts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 200px;
+      width: 100%;
+
+      a {
+        display: block;
+      }
 
     }
 
@@ -98,4 +117,52 @@ export default {
   }
 
 }
+
+@media (max-width: 650px) {
+  .footer__top {
+    flex-wrap: wrap;
+    padding: 40px 0 30px;
+
+    &-info {
+      margin-bottom: 20px;
+      padding-right: 0;
+    }
+
+    &-contacts {
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+      max-width: unset;
+    }
+  }
+
+  .footer__bottom {
+    padding: 30px 0 20px;
+    justify-content: center;
+    grid-gap: 20px;
+
+    &-text {
+      width: 100%!important;
+      max-width: 100%!important;
+    }
+
+    flex-wrap: wrap;
+  }
+
+  .footer__socials {
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer__top-info {
+   flex-direction: column;
+
+    .footer__logo {
+      margin-bottom: 20px;
+    }
+
+  }
+}
+
+
 </style>

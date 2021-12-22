@@ -1,13 +1,17 @@
 <template>
   <div class="my-container">
     <section class="section" style="padding-top: 0;">
-      <AppSlider :list="feedback" :slide-count="1" :pagination="false" class="feedback">
+      <AppSlider :list="feedback"
+                 :slide-count="isDesktopMedium ? 1 : 1"
+                 :pagination="false"
+                 class="feedback"
+      >
         <template #default="{item}">
           <div class="feedback__item">
             <div class="feedback__item-left">
               <div class="feedback__item-top">
                 <AppText
-                    :size="isMobileSmall ? 28 : isMobile ? 34  : isDesktopMedium ? 38 : 42"
+                    :size="isMobileSmall ? 28 : isMobile ? 26  : isDesktopMedium ? 32 : 42"
                     :line-height=" isMobileSmall ? 32 : isMobile ? 38 : isDesktopMedium ? 42 : 46"
                     weight="600"
                 > Отзывы наших
@@ -21,13 +25,12 @@
               </div>
             </div>
             <div class="feedback__item-right">
-              <div class="feedback__photo">
+              <div class="feedback__item-photo">
                 <img :src="item.photo" alt="">
               </div>
             </div>
           </div>
         </template>
-
       </AppSlider>
     </section>
   </div>
@@ -79,7 +82,7 @@ export default {
     width: 100%;
 
     &-left {
-
+      width: calc(100% - 600px);
     }
 
     &-top {
@@ -128,10 +131,11 @@ export default {
       width: 100%;
       border-radius: 6px;
       overflow: hidden;
-
       img {
         width: 100%;
-        object-fit: cover;
+        max-height: 500px;
+        overflow: hidden;
+        object-fit: contain;
       }
     }
   }
@@ -148,4 +152,125 @@ export default {
     right: 42% !important;
   }
 }
+
+@media (max-width: 1240px) {
+  .feedback__item-right {
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .feedback__item-top {
+    padding-right: 100px;
+  }
+
+  .feedback__item-left {
+    width: calc(100% - 450px);
+  }
+
+  .feedback .app-slider__button-previous {
+    right: 40% !important;
+  }
+
+  .feedback .app-slider__button-next {
+    right: 35% !important;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .feedback{
+    margin-bottom: 30px;
+  }
+
+  .feedback__item-top::before {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .feedback__item-top {
+    padding-bottom: 20px;
+    padding-right: 30px;
+    min-height: 125px;
+  }
+
+  .feedback__item {
+    flex-wrap: wrap;
+
+    &-top {
+      text-align: center;
+      padding-right: 0;
+      min-height: unset;
+      padding-bottom: 30px;
+
+      .text {
+        max-width: unset;
+      }
+    }
+
+    &-left {
+      width: 100%;
+    }
+
+    &-right {
+      max-width: 100%;
+    }
+
+    &-photo {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+  }
+
+  .feedback .app-slider__button-previous {
+    right: unset!important;
+    bottom: unset!important;
+    top: calc(100% + 20px)!important;
+    left: calc(50% - 35px);
+    transform: translateX(calc(50% - 35px));
+  }
+
+  .feedback .app-slider__button-next {
+    right: unset!important;
+    bottom: unset!important;
+    top: calc(100% + 20px)!important;
+    left:calc(50% - 5px);
+    transform: translateX(calc(50% - 5px));
+  }
+
+}
+
+@media (max-width: 768px) {
+  .feedback__item-top::before {
+    display: none;
+  }
+
+  .feedback__item-photo {
+    margin-top: 20px;
+  }
+
+  .feedback__item-content {
+    padding: 20px;
+  }
+
+  .feedback{
+    margin-bottom: 50px;
+  }
+
+  //.feedback .app-slider__button-previous {
+  //  left: 44%;
+  //  transform: translateX(-44%);
+  //}
+  //
+  //.feedback .app-slider__button-next {
+  //  right: unset!important;
+  //  bottom: unset!important;
+  //  top: calc(100% + 20px)!important;
+  //  left: 56%;
+  //  transform: translateX(-56%);
+  //}
+
+}
+
 </style>

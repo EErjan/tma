@@ -88,7 +88,7 @@ export default {
       return {
         rewind: true,
         drag: this.list.length > this.count,
-        perPage: this.count,
+        perPage: this.slideCount,
         perMove: 1,
         gap: 15,
         arrows: false,
@@ -98,11 +98,11 @@ export default {
             gap: 15
           },
           1100: {
-            perPage: 3,
+            perPage: this.slideCount,
             gap: 15
           },
           900: {
-            perPage: 2,
+            perPage: this.slideCount,
             gap: 15
           },
 
@@ -117,7 +117,7 @@ export default {
     checkArrows(idx) {
       this.showPreviousArrow = idx > 0;
       this.showNextArrow =
-          (this.isMobile ? idx : idx + this.count - 1) < this.list.length - 1;
+          (this.isMobile ? idx : idx + this.slideCount - 1) < this.list.length - 1;
     },
     next() {
       if (this.cardsSlider) {
@@ -175,6 +175,8 @@ export default {
 }
 
 @media (max-width: 776px) {
+
+
 }
 
 </style>

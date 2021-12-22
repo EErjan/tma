@@ -3,7 +3,11 @@
     <div class="my-container">
       <div class="cta__wrap">
         <div class="cta__wrap-inner">
-          <AppText size="30" line-height="46" weight="600" class="mb-30 text-white">
+          <AppText :size="isMobileSmall ? 22 : isMobile ? 26 : 30"
+                   :line-height="isMobileSmall ? 26 : isMobile ? 32 : 46"
+                   weight="600"
+                   class="mb-30 text-white"
+          >
             Запишитесь на курс прямо сейчас
           </AppText>
           <div class="cta__buttons">
@@ -56,8 +60,15 @@ export default {
       width: 100%;
       min-height: 252px;
       background-color: var(--color-main);
-      z-index: 2;
+      z-index: 5;
       overflow: hidden;
+      text-align: center;
+      padding: 20px;
+
+      .text {
+        position: relative;
+        z-index: 5 !important;
+      }
     }
 
     &::before {
@@ -93,6 +104,34 @@ export default {
   &__buttons {
     display: flex;
     grid-gap: 16px;
+    position: relative;
+    z-index: 5;
   }
 }
+
+
+@media (max-width: 768px) {
+  .cta__wrap::before {
+    max-width: 50px;
+    background-size: contain;
+  }
+
+  .cta__wrap::after {
+    max-width: 90px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cta__wrap::before {
+    max-width: 30px;
+    background-size: contain;
+  }
+
+  .cta__wrap::after {
+    max-width: 40px;
+  }
+}
+
+
+
 </style>

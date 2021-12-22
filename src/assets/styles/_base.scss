@@ -64,6 +64,11 @@
   }
 
   &__slider {
+
+    .splide__pagination {
+      width: 85%;
+    }
+
     &-bottom {
       width: 100%;
       display: flex;
@@ -76,3 +81,9 @@
   }
 }
 
+.cta__wrap-inner {
+  .text {
+    position: relative!important;
+    z-index: 5;
+  }
+}

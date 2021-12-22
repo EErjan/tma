@@ -14,7 +14,10 @@
 
       <div class="section__wrap">
 
-        <AppSlider :list="news" class="mb-40">
+        <AppSlider :list="news"
+                   :slide-count="isMobileSmall ? 1 : isMobile ? 2 : 3"
+                   class="mb-40 news__slider"
+        >
           <template #default="{item}">
             <router-link :to="item.path" class="news__item">
               <div class="news__item-photo">
