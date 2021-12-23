@@ -67,7 +67,6 @@
       <div class="my-container">
         <div class="content">
           <div class="content__main "
-               :class="isDesktop ? 'mr-30' : 'mb-40'"
           >
 
             <AppText
@@ -438,104 +437,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.custom__btn {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 10px;
-  line-height: normal;
-  font-weight: 500;
-  font-family: "Gilroy", sans-serif;
-  transition: .2s;
-
-  &:hover {
-    background-color: #f9fafb;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-
-  }
-
-  &.favourite {
-    &.active {
-      color: darkred;
-
-      svg {
-        fill: darkred;
-
-        path {
-          stroke: darkred;
-        }
-      }
-    }
-  }
-
-  &:active {
-    box-shadow: none;
-    transform: scale(0.95);
-  }
-}
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
-  &__main {
-    max-width: calc(100% - 420px);
-    width: 100%;
-    overflow: hidden;
-
-    &.lg {
-      max-width: calc(100% - 270px);
-    }
-  }
-
-}
-
-.sidebar {
-  max-width: 390px;
-  width: 100%;
-
-  &.sm {
-    max-width: 210px;
-    width: 100%;
-  }
-
-  &__menu {
-    &-item {
-      width: 100%;
-      padding: 10px 20px;
-      font-weight: 700;
-      text-align: left;
-      transition: .3s;
-      border-radius: 10px;
-      margin-bottom: 5px;
-      line-height: 26px;
-
-      &.active {
-        background: #EDF5FF;
-      }
-
-      &:hover {
-        background: #EDF5FF;
-      }
-    }
-  }
-}
-
-.detailed-page {
-  .content__main {
-    overflow: visible;
-    margin-bottom: 40px;
-  }
-}
-
-.files__item:hover {
-  border: 1px solid #00ea79;
-  cursor: pointer;
-}
-
 
 </style>

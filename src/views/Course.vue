@@ -1,13 +1,14 @@
 <template>
-  <div class="course-page py-30">
+  <section class="course-page section-padding">
     <div class="my-container">
       <div class="content">
-        <div class="content__main mr-30">
+        <div class="content__main">
           <div class="video-player-wrap mb-20">
-<!--            <video-player :options="videoOptions"-->
-<!--                          @player-state-changed="playerStateChanged"-->
-<!--                          ref="myPlayer"-->
-<!--                          style="width: 100%;object-fit: contain"/>-->
+            <img src="/assets/img/video-player.jpg" alt="" style="width: 100%; object-fit: contain">
+            <!--            <video-player :options="videoOptions"-->
+            <!--                          @player-state-changed="playerStateChanged"-->
+            <!--                          ref="myPlayer"-->
+            <!--                          style="width: 100%;object-fit: contain"/>-->
           </div>
           <div class="tab__main mb-30 ">
             <div class="section__top">
@@ -20,7 +21,6 @@
             </div>
             <div class="tab__body">
               <AppText size="14" line-height="20" weight="500" class="">
-<!--                {{ playingContent.content }}-->
                 Lorem ipsum dolor sit amet.
               </AppText>
             </div>
@@ -33,28 +33,21 @@
               Course name
             </AppText>
             <AppDivider style="margin: 0"/>
-            <Accordion :active-prop="activeAccordionIndex">
-              <AccordionItem class="m-15 bordered radius"
-                             :class="sectionContentId === sectionContent.id ? 'active' : ''"
-                             v-for="(sectionContent, sectionContentIndex) in sectionContentTree"
-                             :key="sectionContentIndex">
+            <Accordion>
+              <AccordionItem class="m-15 bordered radius active">
                 <template slot="accordion-trigger">
                   <div class="course__accordion-header">
                     <div class="course__accordion-numb" :class="isDesktopSmall ? 'mr-10' : 'mr-20'">
-                      {{ sectionContentIndex + 1 }}
+                      1
                     </div>
                     <h4 class="course__accordion-text">
-                      {{ sectionContent.name }}
+                      An introduction to web development
                     </h4>
                   </div>
                 </template>
                 <template slot="accordion-content">
-                  <div style="padding: 0 15px 15px"
-                       v-for="(content, contentIndex) in sectionContent.contentList"
-                       :key="contentIndex"
-                       @click="selectContent(sectionContent.id, content.id)">
-                    <div class="course__accordion-item radius bordered pa-10 mb-10"
-                         :class="contentId === content.id ? 'active' : ''">
+                  <div style="padding: 0 15px 15px">
+                    <div class="course__accordion-item radius bordered pa-10 mb-10 active">
                       <div class="course__accordion-icon mr-20">
                         <svg width="16" height="16" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -63,13 +56,12 @@
                         </svg>
                       </div>
                       <h4 class="course__accordion-text">
-                        {{ content.name }}
+                        What Matters In This Section?
                       </h4>
                     </div>
-                    <a href="#!" target="_blank" class="course__accordion-item mb-10 radius bordered pa-10"
-                       v-for="(file, fileIndex) in content.files" :key="fileIndex">
+                    <a href="#!" target="_blank" class="course__accordion-item mb-10 radius bordered pa-10">
                       <div class="course__accordion-icon mr-20">
-                        <img src="/icons/document.svg" alt="">
+                        <img src="/assets/icons/document.svg" alt="">
                       </div>
                       <h4 class="course__accordion-text">
                         What Matters In This Section?
@@ -84,14 +76,13 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 
 import "/src/assets/styles/pages/detailed-page.scss"
 // import {videoPlayer} from 'vue-vjs-hls';
-import {mapActions, mapGetters, mapMutations} from "vuex";
 import Comments from "../components/Shared-components/Comments";
 import Accordion from "../components/Shared-components/Accordion";
 import AccordionItem from "../components/Shared-components/AccordionItem";
@@ -109,168 +100,8 @@ export default {
   },
   data() {
     return {
-      videoOptions: {
-        autoplay: true,
-        controls: true,
-        start: 0,
-        source: {
-          src: "https://logos-channel.scaleengine.net/logos-channel/live/biblescreen-ad-free/playlist.m3u8",
-          type: 'application/x-mpegURL',
-        },
-        language: 'ru-Ru',
-        playbackRates: [0.7, 1.0, 1.3, 1.5, 1.7],
-        poster: "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-5.jpg"
-      },
-      courseId: null,
-      contentId: null,
-      sectionContentId: null,
-      sectionContentTree: {
-        contentList: [{
-          id: 359,
-          name: "Kirish",
-          durationMin: 4,
-          durationSek: 3,
-          testQuestionCount: 0,
-          isActive: true,
-          isWatched: false,
-          watchedTime: 0,
-          files: [{
-            fileName: null,
-            fileRoot: null,
-          }],
-        }],
-        durationMin: 4,
-        durationSek: 3,
-        id: 121,
-        name: "Kirish"
-      },
-      playingContent: {
-        content: null,
-        contentName: null,
-        courseId: null,
-        displayOrder: null,
-        durationMin: null,
-        durationSek: null,
-        id: null,
-        picture: null,
-        sectionId: null,
-        vFileName: null,
-        transcriptList: [
-          {
-            beginTime: null,
-            contentId: null,
-            id: null,
-            positionNumber: null,
-            transcriptText: null,
-          }
-        ]
-      },
-      course: {
-        authorFullName: null,
-        description: null,
-        id: null,
-        isActive: null,
-        isFree: null,
-        isPayed: null,
-        languageId: null,
-        languageName: null,
-        levelId: null,
-        levelName: null,
-        name: null,
-        shortName: null,
-      },
-      activeAccordionIndex: 5,
     }
   },
-  computed: {
-    ...mapGetters(['comments']),
-    sectionContentIdComputed() {
-      return this.sectionContentId;
-    }
-  },
-  methods: {
-    ...mapActions(['getContentComments']),
-    ...mapMutations(['setCourseContentId']),
-    getComments() {
-      this.getContentComments(this.contentId);
-    },
-    getCourse(courseId) {
-      try {
-        this.$api.get(`Main/Course/${courseId}`)
-            .then(res => {
-              if (!res.error) {
-                this.course = res.result;
-              }
-            })
-      } catch (e) {
-        //something
-      }
-    },
-    async getSectionTree() {
-      try {
-        this.$api.get(`Main/Course/SectionContentTree?courseId=${this.courseId}`)
-            .then(res => {
-              if (!res.error) {
-                this.sectionContentTree = res.result;
-                if (this.sectionContentTree && this.sectionContentTree[0] && this.sectionContentTree[0].contentList && this.sectionContentTree[0].contentList[0]) {
-                  let firstSectionContent = this.sectionContentTree[0];
-                  let firstContent = this.sectionContentTree[0].contentList[0];
-                  if (!this.sectionContentId) {
-                    this.sectionContentId = firstSectionContent.id;
-                    this.contentId = firstContent.id;
-                    this.setCourseContentId(this.contentId);
-                  }
-                  this.getActiveAccordionIndex();
-                  this.getContent();
-                  this.getComments();
-                }
-              }
-            })
-      } catch (e) {
-        //
-      }
-    },
-    getContent() {
-      this.$api.get(`Main/Course/GetContent/${this.contentId}`).then(res => {
-        if (!res.error) {
-          this.playingContent = res.result.content;
-          this.playingContent.transcriptList = res.result.transcriptList;
-          this.videoOptions.source.src = `${this.baseURL}coursevideos/${res.result.content.id}/index.m3u8`;
-        }
-      });
-    },
-    playerStateChanged() {
-      //console.log(event)
-    },
-    selectContent(sectionContentId, contentId) {
-      this.sectionContentId = sectionContentId;
-      this.contentId = contentId;
-      this.routeReplace();
-      this.getComments();
-      this.setCourseContentId(this.contentId);
-    },
-    routeReplace() {
-      this.$router.replace(`/course-page/${this.courseId}/${this.sectionContentId}/${this.contentId}`);
-    },
-    getActiveAccordionIndex() {
-      let index = this.sectionContentTree.findIndex(s => s.id === parseInt(this.sectionContentId));
-      if (index !== -1) {
-        this.activeAccordionIndex = index + 5;
-      }
-    },
-  },
-  mounted() {
-    this.courseId = this.$route.params.course_id;
-    this.contentId = this.$route.params.content_id;
-    this.sectionContentId = this.$route.params.section_content_id;
-    this.getSectionTree();
-    this.getCourse(this.courseId);
-  },
-  watch: {
-    $route() {
-      this.getContent();
-    }
-  }
 }
 </script>
 
@@ -382,7 +213,7 @@ export default {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    //justify-content: center;
 
     &__item {
       padding: 20px 0;
@@ -394,7 +225,7 @@ export default {
       background-color: transparent;
 
       &.active {
-        border-bottom: 2px solid var(--color-border);
+        border-bottom: 2px solid var(--color-main);
       }
     }
 
